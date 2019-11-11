@@ -1,0 +1,33 @@
+version: "3.0"
+
+services:
+  db:
+    image: mariadb
+    ports:
+      - "4406:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: wordpress
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+
+  wp:
+    image: wordpress
+    ports:
+      - "8081:80"
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+    depends_on:
+      - db
+    volumes:
+      - .:/var/www/html/wp-content/plugins/plugin-sample-project
+
+  chromedriver:
+    image: selenium/standalone-chrome:3.141.59-oxygen
+    links:
+      - "wp:wp.test"
+    ports:
+      - "4445:4444"

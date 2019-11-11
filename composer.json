@@ -1,0 +1,26 @@
+{
+    "name": "lucatume/plugin-sample-project",
+    "authors": [
+        {
+            "name": "Luca Tumedei",
+            "email": "luca@theaveragedev.com"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "wordpress/wordpress",
+                "version": "5.0",
+                "dist": {
+                    "type": "zip",
+                    "url": "https://github.com/WordPress/WordPress/archive/master.zip"
+                }
+            }
+        }
+    ],
+    "require-dev": {
+        "wordpress/wordpress": "^5.0",
+        "lucatume/wp-browser": "^2.2"
+    }
+}
